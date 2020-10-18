@@ -49,7 +49,7 @@ class LinebotsController < ApplicationController
 
     def search_and_create_message
       # 楽天のSDK
-      RakutenWebService.congigure do |c|
+      RakutenWebService.configure do |c|
         c.application_id = ENV['RAKUTEN_APPID']
         c.affiliate_id = ENV['RAKUTEN_AFID']
       end
@@ -59,14 +59,14 @@ class LinebotsController < ApplicationController
       res = RakutenWebService::Ichiba::Item.search(keyword: input, hits: 3, imageFlag: 1)
       items = []
       # 取得したデータを使いやすいように配列に格納し直す
-      items = res.map{ |items| item }
+      items = res.map{ |item| item }
       make_reply_content(items)
     end
 
     def make_reply_content(items)
       {
         "type": "flex",
-        "altText": "this is a flex message",
+        "altText": "This is a Flex Message",
         "contents": 
         {
           "type": "carousel",
