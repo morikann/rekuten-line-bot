@@ -47,7 +47,7 @@ class LinebotsController < ApplicationController
       end
     end
 
-    def search_and_create_message
+    def search_and_create_message(input)
       # 楽天のSDK
       RakutenWebService.configure do |c|
         c.application_id = ENV['RAKUTEN_APPID']
