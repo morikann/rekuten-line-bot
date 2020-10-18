@@ -42,7 +42,7 @@ class LinebotsController < ApplicationController
     def client
       # モジュールの名前空間::を使っている。Client class -> https://github.com/line/line-bot-sdk-ruby/blob/master/lib/line/bot/client.rb 
       @client ||= Line::Bot::Client.new do |config|
-        config.channel_select = ENV['LINE_BOT_CHANNEL_SECRET']
+        config.channel_secret = ENV['LINE_BOT_CHANNEL_SECRET']
         config.channel_token = ENV['LINE_BOT_CHANNEL_TOKEN']
       end
     end
