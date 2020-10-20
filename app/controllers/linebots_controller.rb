@@ -28,7 +28,8 @@ class LinebotsController < ApplicationController
           # 入力した文字をinputに格納
           input = event.message['text']
           # search_and_create_messageメソッド内で楽天APIを用いた商品検索、メッセージの作成を行う
-          message = search_and_create_message(input)
+          # message = search_and_create_message(input)
+          message = {type:'text', text: 'Hello, World!'}
           client.reply_message(event['replyToken'], message)
         end
       end
